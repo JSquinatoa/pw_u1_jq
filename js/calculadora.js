@@ -80,27 +80,27 @@ const fundamentos = () => {
 
     const numeros = numerosImpares.concat(numerospares);
     console.log(numeros);
-    
+
 
     /*Sentecnias de control */
 
-    for(const dia of diasLaborales){
-        console.log(dia);    
-        
+    for (const dia of diasLaborales) {
+        console.log(dia);
+
         if (dia === 'Viernes') {
             console.log('Por fin Viernes ');
         } else {
-            console.log('Aun no es Viernes :C');               
+            console.log('Aun no es Viernes :C');
         }
 
         if (dia !== 'Viernes') {
-            console.log('Día normal');          
+            console.log('Día normal');
         } else {
             console.log('Dia de salida');
         }
     }
 
-    /*manejo de objetos*/ 
+    /*manejo de objetos*/
     const miProfesor = {
         nombre: 'John',
         apellido: 'Quinatoa',
@@ -108,18 +108,18 @@ const fundamentos = () => {
         genero: 'masculino',
         ciudad: 'Quito'
     }
-    
+
     console.log(miProfesor);
     console.log(miProfesor.nombre);
-    /*Seteo de Atributos */ 
+    /*Seteo de Atributos */
     miProfesor.apellido = 'Guerrero';
 
     console.log(miProfesor);
 
     if (miProfesor.ciudad === 'Quito') {
-        console.log('Es de la capital');           
+        console.log('Es de la capital');
     }
-    
+
     /*Ejercicoi*/
 
     const Estudiante1 = {
@@ -148,7 +148,173 @@ const fundamentos = () => {
 
     const arregloEstudiantes = [Estudiante1, Estudiante2, Estudiante3]
     console.table(arregloEstudiantes);
+
+    const ciudadano = {
+        nombre: 'John',
+        apellido: 'Quinatoa',
+        direccion: {
+            callePrincipal: 'Pedro Campaña',
+            calleSecundaria: 'José Encalada',
+            numeracion: 'N65-123',
+            barrio: {
+                referencia: 'Alado de una tienda'
+            }
+        }
+    }
+
+    console.table(ciudadano);
+    console.table(ciudadano.nombre);
+    console.table(ciudadano.direccion.callePrincipal);
+    console.table(ciudadano.direccion.barrio.referencia);
+
+    ciudadano.direccion.callePrincipal = 'Av. Amazonas';
+
+    console.log(ciudadano);
+
+    const est1 = {
+        nombre: 'John',
+    }
+
+    const est2 = {
+        nombre: 'Steven',
+    }
+
+    est1.nombre = 'David'
+
+    const arregloEstudiantes1 = [est1, est2]
+    console.log(arregloEstudiantes1);
+
+    const arregloEstudiantes2 = [
+        {
+            nombre: 'Naidelin',
+            apellido: 'Tabango'
+        },
+        {
+            nombre: 'Brigith',
+            apellido: 'Mañay'
+        }
+    ]
+
+    console.log(arregloEstudiantes2);
+    console.log(arregloEstudiantes2[1].apellido);
+
+    // Desestructuración de arreglos
+    const colores = ['Amarillo', 'Azul', 'Rojo', 'Verde', 'Naranja'];
+
+    const [c1, c2, c3, c4, c5] = colores;
+    console.log(c1);
+    console.log(c5);
+
+    const [cuno, cdos] = colores;
+    console.log(cuno);
+    console.log(cdos);
+
+    const [, , ctres] = colores;
+    console.log(ctres);
+
+    const [c01, c02] = ['Amarillo', 'Azul', 'Rojo', 'Verde', 'Naranja'];
+
+    desestructuracionArreglo(colores);  
+     
+    const [,p2, p3, p4, p5, p6, p7, p8, p9, p10] = desestructuracionArreglo2();
+    console.log(p2);
+    console.log(p3);
+    console.log(p10);
+
+    // Desustructuración por operador rest
+    console.log('Desustructuración por operador rest');
+    const [p1, ...resto] = desestructuracionArreglo2();
+    console.log(p1);
+    console.log(resto);    
+     
     
+
+    // Desustructuración de objetos
+    const auto = {
+        marca: 'Toyota',
+        modelo: 'prius',
+        anio: 2020,
+        color: 'amarillo'
+    }
+
+    const {marca, color, anio} = auto;
+
+    console.log(color);
+
+    const {anio1} = {
+        marca1: 'Toyota',
+        modelo1: 'prius',
+        anio1: 2020,
+        color1: 'amarillo'
+    }
+
+    console.log(anio1);
+
+    desestructuracionObjeto(auto);  
+    
+    const universidad = {
+        nombre: 'UCE',
+        direccion: 'America',
+        rector: {
+            nombre: 'John',
+            apellido: 'Quinatoa',
+        }   
+    }
+
+    const {rector} = universidad
+    const {apellido} = rector
+
+    console.log(apellido);
+
+
+    // En una sola linea
+
+    const universidad2 = {
+        nombre2: 'UCE',
+        direccion2: 'America',
+        rector2: {
+            nombreR2: 'John',
+            apellidoR2: 'Quinatoa',
+        }   
+    }
+
+    const {nombre2, rector2:{nombreR2}} = universidad2
+    console.log(nombreR2);
+    
+    // desestructuración de objeto por operador rest
+    const autoR = {
+        marcaR: 'Toyota',
+        modeloR: 'prius',
+        anioR: 2020,
+        colorR: 'amarillo'
+    }
+    
+    const {marcaR, ...restoO} = autoR 
+    console.log(marcaR);
+    console.log(restoO);
+
     
 }
+
+function desestructuracionArreglo([c1, c2, c3]) {
+    console.log(c1);
+    console.log(c2);
+    console.log(c3);       
+}
+
+function desestructuracionArreglo2() {
+    const colores = ['Rosado', 'Azul', 'Rojo', 'Verde', 'Naranja'];
+    return colores
+}
+
+function desestructuracionObjeto({marca, color}) {
+    console.log(marca);        
+    console.log(color);        
+}
+
+
+
+
+
+
 
